@@ -1,12 +1,14 @@
 const container = document.querySelector(".container");
-let display_var = "";
 
 const buttons = Array.from(document.querySelectorAll("button"));
 const display = document.querySelector(".display");
 const opp = ["+", "*", "/", "-"]; //list of operations
-let num1 = 0;
-let num2 = 0;
+
+let num1 = "";
+let num2 = "";
+let result = 0;
 let current_opp = "";
+let display_var = "";
 
 function add(n1, n2) {
 	return n1 + n2;
@@ -28,16 +30,18 @@ function div(n1, n2) {
 }
 
 function reset() {
-	num1 = 0;
-	num2 = 0;
+	num1 = "";
+	num2 = "";
+	result = "";
 	current_opp = "";
 	display_var = "";
 }
 
 function operate(op, n1, n2) {
 	display.textContent = "";
-	display.textContent = eval(op)(n1, n2);
-	reset();
+	result = eval(op)(n1, n2);
+	display.textContent = result;
+	display_var = "";
 }
 
 buttons.forEach((button) => {
@@ -61,6 +65,12 @@ buttons.forEach((button) => {
 		//if its an opperation
 		if (opp.indexOf(button.value) !== -1) {
 			num1 = parseFloat(display_var.slice(0, -1));
+
+			//so we can make an opperation on the previous result
+			if (isNaN(num1)) {
+				num1 = result;
+			}
+
 			current_opp = button.className;
 			display_var = "";
 		}
