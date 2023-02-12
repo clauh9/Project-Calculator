@@ -38,8 +38,9 @@ function reset() {
 }
 
 function operate(op, n1, n2) {
+	console.log(current_opp);
 	display.textContent = "";
-	result = eval(op)(n1, n2);
+	result = eval(op.split(" ")[0])(n1, n2);
 	display.textContent = result;
 	display_var = "";
 }
