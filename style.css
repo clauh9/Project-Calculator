@@ -8,12 +8,12 @@
 	padding: 0px;
 }
 
-:root {
-	color-scheme: dark;
-}
-
 body {
 	line-height: 1.5;
+}
+
+:root {
+	color-scheme: dark;
 }
 
 .container {
