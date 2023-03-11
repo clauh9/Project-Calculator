@@ -1,2 +1,3 @@
 # Project-Calculator
 
+CE = C
